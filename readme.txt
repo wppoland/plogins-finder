@@ -14,16 +14,16 @@ A friendly step-by-step product finder quiz for WooCommerce: guided single-choic
 
 Finder adds a guided "help me choose" quiz to any page with the `[finder]` shortcode. Shoppers answer a short series of single-choice questions and are shown one recommended product, with its image, price and a button straight to the product page.
 
-Finder is developed in the open. The code, and a place to report bugs or request features, live at https://github.com/wppoland/plogins-finder.
+Finder is developed in the open. The code, and a place to report bugs or request features, live at [github.com/wppoland/plogins-finder](https://github.com/wppoland/plogins-finder).
 
 You define the questions and options, then map every answer combination to a product. A "Generate combinations" button builds the map for you from your steps, so you only pick a product for each path.
 
 = Documentation and links =
 
-* **Documentation** - https://plogins.com/plogins-finder/docs/
-* **Plugin page** - https://plogins.com/plogins-finder/
-* **Source code** - https://github.com/wppoland/plogins-finder
-* **Bug reports and feature requests** - https://github.com/wppoland/plogins-finder/issues
+* **Documentation**: [plogins.com/plogins-finder/docs/](https://plogins.com/plogins-finder/docs/)
+* **Plugin page**: [plogins.com/plogins-finder/](https://plogins.com/plogins-finder/)
+* **Source code**: [github.com/wppoland/plogins-finder](https://github.com/wppoland/plogins-finder)
+* **Bug reports and feature requests**: [github.com/wppoland/plogins-finder/issues](https://github.com/wppoland/plogins-finder/issues)
 
 = Built for speed and accessibility =
 
