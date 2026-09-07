@@ -1,10 +1,10 @@
-=== Finder - Product Finder Quiz for WooCommerce ===
+=== Plogins Finder - Product Finder Quiz for WooCommerce ===
 Contributors: motylanogha
 Tags: woocommerce, product finder, product quiz, product recommendation, guided selling
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,9 @@ Finder does not connect to, or send any data to, any external service or third-p
 All data stays inside your WordPress database: the questions, options, results map and settings live in the `finder_settings` option (with `finder_db_version` tracking the schema). When a shopper finishes the quiz, their answers are sent in a same-origin REST request to your site's own `/wp-json/` endpoint, which returns the recommendation; no outbound HTTP request is ever made. The current step and answers are also kept in the page URL and the browser's per-tab session storage so the quiz is resumable. Deleting the plugin removes its options.
 
 == Changelog ==
+
+= 1.0.7 =
+* Renamed to Plogins Finder - Product Finder Quiz for WooCommerce so the name leads with the brand rather than a generic word, which is what the WordPress.org plugin review team asks for. The plugin slug is unchanged.
 
 = 1.0.6 =
 * Tested against WordPress 7.1. Verified by activating this build on a clean 7.1 install with WooCommerce 11.1, not by editing the header.
