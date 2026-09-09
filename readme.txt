@@ -4,11 +4,11 @@ Tags: woocommerce, product finder, product quiz, product recommendation, guided 
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A friendly step-by-step product finder quiz for WooCommerce: guided single-choice questions lead each shopper to one product recommendation. No jQuery.
+A step-by-step product finder quiz for WooCommerce: guided single-choice questions lead each shopper to one product recommendation. No jQuery.
 
 == Description ==
 
@@ -100,6 +100,9 @@ Finder does not connect to, or send any data to, any external service or third-p
 All data stays inside your WordPress database: the questions, options, results map and settings live in the `finder_settings` option (with `finder_db_version` tracking the schema). When a shopper finishes the quiz, their answers are sent in a same-origin REST request to your site's own `/wp-json/` endpoint, which returns the recommendation; no outbound HTTP request is ever made. The current step and answers are also kept in the page URL and the browser's per-tab session storage so the quiz is resumable. Deleting the plugin removes its options.
 
 == Changelog ==
+
+= 1.0.9 =
+* The short description was 151 characters, one over the limit WordPress.org allows, so the plugin directory cut it off mid-sentence. Shortened by one word; the meaning is unchanged.
 
 = 1.0.8 =
 * The translation template was regenerated. It still named an older version of the plugin and pointed at source lines that had since moved, which is what translation tools read to show a string in context.
