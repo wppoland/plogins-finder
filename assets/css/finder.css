@@ -83,7 +83,7 @@
 
 /* Steps --------------------------------------------------------------- */
 .plogins-finder__step {
-	min-block-size: 12rem; /* reserve height → no layout shift between steps */
+	min-block-size: 12rem; /* reserve height > no layout shift between steps */
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -223,7 +223,7 @@
 
 /* Result -------------------------------------------------------------- */
 .plogins-finder__result {
-	min-block-size: 6rem; /* reserve space for the async card → no CLS */
+	min-block-size: 6rem; /* reserve space for the async card > no CLS */
 	margin-block-start: var(--finder-gap);
 }
 

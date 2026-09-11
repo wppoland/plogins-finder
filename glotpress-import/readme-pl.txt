@@ -52,7 +52,7 @@ Kreator jest renderowany po stronie serwera (dzięki czemu można go buforować 
 
 == Installation ==
 
-1. Wgraj wtyczkę do `/wp-content/plugins/finder` lub zainstaluj przez Wtyczki → Dodaj nową.
+1. Wgraj wtyczkę do `/wp-content/plugins/finder` lub zainstaluj przez Wtyczki > Dodaj nową.
 2. Włącz ją. WooCommerce musi być aktywne.
 3. Wejdź w menu <strong>Finder</strong> w kokpicie, zbuduj kroki, wygeneruj kombinacje i wybierz produkt dla każdej z nich, a następnie włącz kreator.
 4. Dodaj kreator na dowolnej stronie lub wpisie za pomocą shortcode’u `[finder]`.

@@ -52,7 +52,7 @@ El cuestionario se renderiza en el servidor (para que pueda cachearse junto con 
 
 == Installation ==
 
-1. Sube el plugin a `/wp-content/plugins/finder` o instálalo desde Plugins → Añadir nuevo.
+1. Sube el plugin a `/wp-content/plugins/finder` o instálalo desde Plugins > Añadir nuevo.
 2. Actívalo. WooCommerce debe estar activo.
 3. Entra en el menú <strong>Finder</strong> del escritorio, construye tus pasos, genera las combinaciones y elige un producto para cada una, y luego activa el cuestionario.
 4. Añade el cuestionario a cualquier página o entrada con el shortcode `[finder]`.

@@ -419,7 +419,7 @@ final class Settings implements HasHooks
     }
 
     /**
-     * Small, accessible "?" help affordance (aria-describedby → tooltip).
+     * Small, accessible "?" help affordance (aria-describedby > tooltip).
      */
     private function helpTip(string $text): void
     {

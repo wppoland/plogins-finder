@@ -52,7 +52,7 @@ Das Quiz wird serverseitig gerendert (damit es mit der Seite zwischengespeichert
 
 == Installation ==
 
-1. Lade das Plugin nach `/wp-content/plugins/finder` hoch oder installiere es über Plugins → Installieren.
+1. Lade das Plugin nach `/wp-content/plugins/finder` hoch oder installiere es über Plugins > Installieren.
 2. Aktiviere es. WooCommerce muss aktiv sein.
 3. Öffne das Menü <strong>Finder</strong> im WP-Adminbereich, baue deine Schritte auf, generiere die Kombinationen und wähle für jede ein Produkt, und aktiviere dann das Quiz.
 4. Füge das Quiz mit dem Shortcode `[finder]` auf einer beliebigen Seite oder in einem Beitrag ein.
