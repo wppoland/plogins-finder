@@ -12,7 +12,7 @@ use WPPoland\StorefrontKit\Finder\ProductFinderEngine;
 /**
  * Thin adapter over the storefront-kit {@see ProductFinderEngine}.
  *
- * Injects this plugin's text-domain ('plogins-finder'), option key
+ * Injects this plugin's text-domain ('trovilo'), option key
  * ('finder_settings'), asset URLs and translated labels into the
  * namespace-neutral engine, and supplies the closures it needs: enabled/settings
  * accessors, a template renderer, and a `resolveProduct` closure that turns a
@@ -39,7 +39,7 @@ final class FinderService implements HasHooks
             restNamespace: 'plogins/v1',
             restRoute: 'finder/match',
             nonceAction: 'wp_rest',
-            assetHandle: 'plogins-finder',
+            assetHandle: 'trovilo',
             styleUrl: \Finder\Plugin::instance()->url('assets/css/finder.css'),
             scriptUrl: \Finder\Plugin::instance()->url('assets/js/finder.js'),
             version: \Finder\VERSION,
@@ -47,15 +47,15 @@ final class FinderService implements HasHooks
             widgetTemplate: 'finder',
             resultTemplate: 'result-card',
             labels: [
-                'start'         => __('Start over', 'plogins-finder'),
-                'back'          => __('Back', 'plogins-finder'),
-                'step'          => __('Step {current} of {total}', 'plogins-finder'),
-                'choose'        => __('Pick an option to continue.', 'plogins-finder'),
-                'result_intro'  => __('Here is your match!', 'plogins-finder'),
-                'loading'       => __('Finding your match…', 'plogins-finder'),
-                'no_match'      => __('We could not find a match. Please try again.', 'plogins-finder'),
-                'not_available' => __('That recommendation is not available right now.', 'plogins-finder'),
-                'error'         => __('Something went wrong. Please try again.', 'plogins-finder'),
+                'start'         => __('Start over', 'trovilo'),
+                'back'          => __('Back', 'trovilo'),
+                'step'          => __('Step {current} of {total}', 'trovilo'),
+                'choose'        => __('Pick an option to continue.', 'trovilo'),
+                'result_intro'  => __('Here is your match!', 'trovilo'),
+                'loading'       => __('Finding your match…', 'trovilo'),
+                'no_match'      => __('We could not find a match. Please try again.', 'trovilo'),
+                'not_available' => __('That recommendation is not available right now.', 'trovilo'),
+                'error'         => __('Something went wrong. Please try again.', 'trovilo'),
             ],
             isEnabled: fn (): bool => $this->isEnabled(),
             settings: fn (): array => $this->settings(),

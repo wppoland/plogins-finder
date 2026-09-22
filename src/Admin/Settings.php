@@ -49,7 +49,7 @@ final class Settings implements HasHooks
         $url = admin_url('admin.php?page=' . self::PAGE);
         array_unshift(
             $links,
-            '<a href="' . esc_url($url) . '">' . esc_html__('Settings', 'plogins-finder') . '</a>'
+            '<a href="' . esc_url($url) . '">' . esc_html__('Settings', 'trovilo') . '</a>'
         );
 
         return $links;
@@ -79,23 +79,23 @@ final class Settings implements HasHooks
             'option'   => self::OPTION,
             'products' => $this->productChoices(),
             'i18n'     => [
-                'option'          => __('- Select a product -', 'plogins-finder'),
-                'addStep'         => __('Add step', 'plogins-finder'),
-                'addOption'       => __('Add option', 'plogins-finder'),
-                'remove'          => __('Remove', 'plogins-finder'),
-                'removeStep'      => __('Remove step', 'plogins-finder'),
-                'question'        => __('Question', 'plogins-finder'),
-                'help'            => __('Hint (optional)', 'plogins-finder'),
-                'optionLabel'     => __('Option label', 'plogins-finder'),
-                'optionValue'     => __('Value (slug)', 'plogins-finder'),
-                'generate'        => __('Generate / refresh combinations', 'plogins-finder'),
-                'product'         => __('Recommended product', 'plogins-finder'),
-                'headline'        => __('Headline (optional)', 'plogins-finder'),
-                'blurb'           => __('Description (optional)', 'plogins-finder'),
-                'cta'             => __('Button label (optional)', 'plogins-finder'),
-                'coverageDone'    => __('All combinations have a product. ✓', 'plogins-finder'),
-                'coverageMissing' => __('{count} combination(s) still need a product.', 'plogins-finder'),
-                'needSteps'       => __('Define at least one step with options first.', 'plogins-finder'),
+                'option'          => __('- Select a product -', 'trovilo'),
+                'addStep'         => __('Add step', 'trovilo'),
+                'addOption'       => __('Add option', 'trovilo'),
+                'remove'          => __('Remove', 'trovilo'),
+                'removeStep'      => __('Remove step', 'trovilo'),
+                'question'        => __('Question', 'trovilo'),
+                'help'            => __('Hint (optional)', 'trovilo'),
+                'optionLabel'     => __('Option label', 'trovilo'),
+                'optionValue'     => __('Value (slug)', 'trovilo'),
+                'generate'        => __('Generate / refresh combinations', 'trovilo'),
+                'product'         => __('Recommended product', 'trovilo'),
+                'headline'        => __('Headline (optional)', 'trovilo'),
+                'blurb'           => __('Description (optional)', 'trovilo'),
+                'cta'             => __('Button label (optional)', 'trovilo'),
+                'coverageDone'    => __('All combinations have a product. ✓', 'trovilo'),
+                'coverageMissing' => __('{count} combination(s) still need a product.', 'trovilo'),
+                'needSteps'       => __('Define at least one step with options first.', 'trovilo'),
             ],
         ]);
     }
@@ -103,8 +103,8 @@ final class Settings implements HasHooks
     public function addMenuPage(): void
     {
         add_menu_page(
-            __('Finder Settings', 'plogins-finder'),
-            __('Finder', 'plogins-finder'),
+            __('Trovilo: product finder quiz', 'trovilo'),
+            __('Product Finder', 'trovilo'),
             'manage_woocommerce',
             self::PAGE,
             [$this, 'renderPage'],
@@ -142,18 +142,18 @@ final class Settings implements HasHooks
             <h1>
                 <?php echo esc_html(get_admin_page_title()); ?>
                 <?php if ($enabled) : ?>
-                    <span class="finder-status finder-status--on"><span class="finder-status__dot" aria-hidden="true"></span><?php esc_html_e('Live', 'plogins-finder'); ?></span>
+                    <span class="finder-status finder-status--on"><span class="finder-status__dot" aria-hidden="true"></span><?php esc_html_e('Live', 'trovilo'); ?></span>
                 <?php else : ?>
-                    <span class="finder-status finder-status--off"><span class="finder-status__dot" aria-hidden="true"></span><?php esc_html_e('Off', 'plogins-finder'); ?></span>
+                    <span class="finder-status finder-status--off"><span class="finder-status__dot" aria-hidden="true"></span><?php esc_html_e('Off', 'trovilo'); ?></span>
                 <?php endif; ?>
             </h1>
 
             <p class="finder-admin__intro">
-                <?php esc_html_e('Build a friendly step-by-step quiz that guides shoppers to one product. Add it to any page with the shortcode below, define your questions, then map every answer combination to a product.', 'plogins-finder'); ?>
+                <?php esc_html_e('Build a friendly step-by-step quiz that guides shoppers to one product. Add it to any page with the shortcode below, define your questions, then map every answer combination to a product.', 'trovilo'); ?>
             </p>
 
             <p class="finder-admin__shortcode">
-                <?php esc_html_e('Shortcode:', 'plogins-finder'); ?>
+                <?php esc_html_e('Shortcode:', 'trovilo'); ?>
                 <code>[finder]</code>
             </p>
 
@@ -161,57 +161,57 @@ final class Settings implements HasHooks
                 <?php settings_fields(self::PAGE); ?>
 
                 <div class="finder-card">
-                    <h2><?php esc_html_e('Basics', 'plogins-finder'); ?></h2>
+                    <h2><?php esc_html_e('Basics', 'trovilo'); ?></h2>
                     <table class="form-table" role="presentation">
                         <tbody>
                             <tr>
                                 <th scope="row">
-                                    <?php esc_html_e('Enable finder', 'plogins-finder'); ?>
-                                    <?php $this->helpTip(__('The master switch. Keep it off until every combination below has a product mapped, then turn it on so the quiz appears wherever you placed the shortcode.', 'plogins-finder')); ?>
+                                    <?php esc_html_e('Enable finder', 'trovilo'); ?>
+                                    <?php $this->helpTip(__('The master switch. Keep it off until every combination below has a product mapped, then turn it on so the quiz appears wherever you placed the shortcode.', 'trovilo')); ?>
                                 </th>
                                 <td>
                                     <label for="finder_enabled">
                                         <input type="checkbox" id="finder_enabled" name="<?php echo esc_attr(self::OPTION); ?>[enabled]" value="1" <?php checked($enabled, true); ?> />
-                                        <?php esc_html_e('Show the finder quiz on the storefront.', 'plogins-finder'); ?>
+                                        <?php esc_html_e('Show the finder quiz on the storefront.', 'trovilo'); ?>
                                     </label>
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row"><label for="finder_title"><?php esc_html_e('Heading', 'plogins-finder'); ?></label></th>
+                                <th scope="row"><label for="finder_title"><?php esc_html_e('Heading', 'trovilo'); ?></label></th>
                                 <td>
-                                    <input type="text" id="finder_title" class="regular-text" name="<?php echo esc_attr(self::OPTION); ?>[title]" value="<?php echo esc_attr((string) ($settings['title'] ?? '')); ?>" placeholder="<?php esc_attr_e('Find your perfect match in 30 seconds', 'plogins-finder'); ?>" />
+                                    <input type="text" id="finder_title" class="regular-text" name="<?php echo esc_attr(self::OPTION); ?>[title]" value="<?php echo esc_attr((string) ($settings['title'] ?? '')); ?>" placeholder="<?php esc_attr_e('Find your perfect match in 30 seconds', 'trovilo'); ?>" />
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row"><label for="finder_intro"><?php esc_html_e('Sub-heading', 'plogins-finder'); ?></label></th>
+                                <th scope="row"><label for="finder_intro"><?php esc_html_e('Sub-heading', 'trovilo'); ?></label></th>
                                 <td>
-                                    <input type="text" id="finder_intro" class="large-text" name="<?php echo esc_attr(self::OPTION); ?>[intro]" value="<?php echo esc_attr((string) ($settings['intro'] ?? '')); ?>" placeholder="<?php esc_attr_e('Answer a couple of questions and we’ll recommend the right product.', 'plogins-finder'); ?>" />
+                                    <input type="text" id="finder_intro" class="large-text" name="<?php echo esc_attr(self::OPTION); ?>[intro]" value="<?php echo esc_attr((string) ($settings['intro'] ?? '')); ?>" placeholder="<?php esc_attr_e('Answer a couple of questions and we’ll recommend the right product.', 'trovilo'); ?>" />
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">
-                                    <label for="finder_accent"><?php esc_html_e('Accent colour', 'plogins-finder'); ?></label>
-                                    <?php $this->helpTip(__('Used for the progress bar, the selected option and the main button. Pick a colour that matches your brand.', 'plogins-finder')); ?>
+                                    <label for="finder_accent"><?php esc_html_e('Accent colour', 'trovilo'); ?></label>
+                                    <?php $this->helpTip(__('Used for the progress bar, the selected option and the main button. Pick a colour that matches your brand.', 'trovilo')); ?>
                                 </th>
                                 <td>
                                     <input type="color" id="finder_accent" name="<?php echo esc_attr(self::OPTION); ?>[accent_color]" value="<?php echo esc_attr((string) ($settings['accent_color'] ?? '#d97706')); ?>" />
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row"><?php esc_html_e('Show price', 'plogins-finder'); ?></th>
+                                <th scope="row"><?php esc_html_e('Show price', 'trovilo'); ?></th>
                                 <td>
                                     <label for="finder_show_price">
                                         <input type="checkbox" id="finder_show_price" name="<?php echo esc_attr(self::OPTION); ?>[show_price]" value="1" <?php checked((bool) ($settings['show_price'] ?? true), true); ?> />
-                                        <?php esc_html_e('Show the product price on the recommendation card.', 'plogins-finder'); ?>
+                                        <?php esc_html_e('Show the product price on the recommendation card.', 'trovilo'); ?>
                                     </label>
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row"><?php esc_html_e('Open in new tab', 'plogins-finder'); ?></th>
+                                <th scope="row"><?php esc_html_e('Open in new tab', 'trovilo'); ?></th>
                                 <td>
                                     <label for="finder_new_tab">
                                         <input type="checkbox" id="finder_new_tab" name="<?php echo esc_attr(self::OPTION); ?>[new_tab]" value="1" <?php checked((bool) ($settings['new_tab'] ?? false), true); ?> />
-                                        <?php esc_html_e('Open the recommended product in a new browser tab.', 'plogins-finder'); ?>
+                                        <?php esc_html_e('Open the recommended product in a new browser tab.', 'trovilo'); ?>
                                     </label>
                                 </td>
                             </tr>
@@ -221,10 +221,10 @@ final class Settings implements HasHooks
 
                 <div class="finder-card">
                     <h2>
-                        <?php esc_html_e('Steps', 'plogins-finder'); ?>
-                        <?php $this->helpTip(__('Each step is one question with single-choice options. The option “value” is a short slug used to identify the answer, keep it lowercase and unique within a step (e.g. home, gym).', 'plogins-finder')); ?>
+                        <?php esc_html_e('Steps', 'trovilo'); ?>
+                        <?php $this->helpTip(__('Each step is one question with single-choice options. The option “value” is a short slug used to identify the answer, keep it lowercase and unique within a step (e.g. home, gym).', 'trovilo')); ?>
                     </h2>
-                    <p class="finder-card__hint"><?php esc_html_e('Add your questions and answers. Two or three short steps convert best.', 'plogins-finder'); ?></p>
+                    <p class="finder-card__hint"><?php esc_html_e('Add your questions and answers. Two or three short steps convert best.', 'trovilo'); ?></p>
 
                     <div class="finder-steps" data-finder-steps>
                         <?php foreach (array_values($steps) as $i => $step) : ?>
@@ -233,14 +233,14 @@ final class Settings implements HasHooks
                     </div>
 
                     <button type="button" class="button button-secondary" data-finder-add-step>
-                        <?php esc_html_e('Add step', 'plogins-finder'); ?>
+                        <?php esc_html_e('Add step', 'trovilo'); ?>
                     </button>
                 </div>
 
                 <div class="finder-card">
                     <h2>
-                        <?php esc_html_e('Results map', 'plogins-finder'); ?>
-                        <?php $this->helpTip(__('One row per answer combination. Click “Generate / refresh combinations” to build the list from your steps, then pick the product each combination should recommend. Existing picks are kept.', 'plogins-finder')); ?>
+                        <?php esc_html_e('Results map', 'trovilo'); ?>
+                        <?php $this->helpTip(__('One row per answer combination. Click “Generate / refresh combinations” to build the list from your steps, then pick the product each combination should recommend. Existing picks are kept.', 'trovilo')); ?>
                     </h2>
                     <p class="finder-callout" data-finder-coverage aria-live="polite"></p>
 
@@ -251,32 +251,32 @@ final class Settings implements HasHooks
                     </div>
 
                     <button type="button" class="button button-secondary" data-finder-generate>
-                        <?php esc_html_e('Generate / refresh combinations', 'plogins-finder'); ?>
+                        <?php esc_html_e('Generate / refresh combinations', 'trovilo'); ?>
                     </button>
                 </div>
 
                 <div class="finder-card">
                     <h2>
-                        <?php esc_html_e('Fallback', 'plogins-finder'); ?>
-                        <?php $this->helpTip(__('Shown when no combination matches, or when a mapped product is unavailable. A safe, popular product is a good choice.', 'plogins-finder')); ?>
+                        <?php esc_html_e('Fallback', 'trovilo'); ?>
+                        <?php $this->helpTip(__('Shown when no combination matches, or when a mapped product is unavailable. A safe, popular product is a good choice.', 'trovilo')); ?>
                     </h2>
                     <table class="form-table" role="presentation">
                         <tbody>
                             <tr>
-                                <th scope="row"><label for="finder_fallback_product"><?php esc_html_e('Recommended product', 'plogins-finder'); ?></label></th>
+                                <th scope="row"><label for="finder_fallback_product"><?php esc_html_e('Recommended product', 'trovilo'); ?></label></th>
                                 <td><?php $this->renderProductSelect(self::OPTION . '[fallback][product_id]', 'finder_fallback_product', (int) ($fallback['product_id'] ?? 0)); ?></td>
                             </tr>
                             <tr>
-                                <th scope="row"><label for="finder_fallback_headline"><?php esc_html_e('Headline', 'plogins-finder'); ?></label></th>
+                                <th scope="row"><label for="finder_fallback_headline"><?php esc_html_e('Headline', 'trovilo'); ?></label></th>
                                 <td><input type="text" id="finder_fallback_headline" class="regular-text" name="<?php echo esc_attr(self::OPTION); ?>[fallback][headline]" value="<?php echo esc_attr((string) ($fallback['headline'] ?? '')); ?>" /></td>
                             </tr>
                             <tr>
-                                <th scope="row"><label for="finder_fallback_blurb"><?php esc_html_e('Description', 'plogins-finder'); ?></label></th>
+                                <th scope="row"><label for="finder_fallback_blurb"><?php esc_html_e('Description', 'trovilo'); ?></label></th>
                                 <td><textarea id="finder_fallback_blurb" class="large-text" rows="2" name="<?php echo esc_attr(self::OPTION); ?>[fallback][blurb]"><?php echo esc_textarea((string) ($fallback['blurb'] ?? '')); ?></textarea></td>
                             </tr>
                             <tr>
-                                <th scope="row"><label for="finder_fallback_cta"><?php esc_html_e('Button label', 'plogins-finder'); ?></label></th>
-                                <td><input type="text" id="finder_fallback_cta" class="regular-text" name="<?php echo esc_attr(self::OPTION); ?>[fallback][cta_label]" value="<?php echo esc_attr((string) ($fallback['cta_label'] ?? '')); ?>" placeholder="<?php esc_attr_e('View product', 'plogins-finder'); ?>" /></td>
+                                <th scope="row"><label for="finder_fallback_cta"><?php esc_html_e('Button label', 'trovilo'); ?></label></th>
+                                <td><input type="text" id="finder_fallback_cta" class="regular-text" name="<?php echo esc_attr(self::OPTION); ?>[fallback][cta_label]" value="<?php echo esc_attr((string) ($fallback['cta_label'] ?? '')); ?>" placeholder="<?php esc_attr_e('View product', 'trovilo'); ?>" /></td>
                             </tr>
                         </tbody>
                     </table>
@@ -301,22 +301,22 @@ final class Settings implements HasHooks
         <div class="finder-step" data-finder-step>
             <div class="finder-step__head">
                 <span class="finder-step__badge" data-finder-step-badge><?php echo esc_html((string) ($index + 1)); ?></span>
-                <button type="button" class="button-link finder-step__remove" data-finder-remove-step><?php esc_html_e('Remove step', 'plogins-finder'); ?></button>
+                <button type="button" class="button-link finder-step__remove" data-finder-remove-step><?php esc_html_e('Remove step', 'trovilo'); ?></button>
             </div>
             <p>
-                <label class="finder-field__label"><?php esc_html_e('Question', 'plogins-finder'); ?></label>
-                <input type="text" class="regular-text" aria-label="<?php esc_attr_e('Question', 'plogins-finder'); ?>" data-finder-name="[steps][__STEP__][question]" name="<?php echo esc_attr($base); ?>[question]" value="<?php echo esc_attr((string) ($step['question'] ?? '')); ?>" />
+                <label class="finder-field__label"><?php esc_html_e('Question', 'trovilo'); ?></label>
+                <input type="text" class="regular-text" aria-label="<?php esc_attr_e('Question', 'trovilo'); ?>" data-finder-name="[steps][__STEP__][question]" name="<?php echo esc_attr($base); ?>[question]" value="<?php echo esc_attr((string) ($step['question'] ?? '')); ?>" />
             </p>
             <p>
-                <label class="finder-field__label"><?php esc_html_e('Hint (optional)', 'plogins-finder'); ?></label>
-                <input type="text" class="regular-text" aria-label="<?php esc_attr_e('Hint (optional)', 'plogins-finder'); ?>" data-finder-name="[steps][__STEP__][help]" name="<?php echo esc_attr($base); ?>[help]" value="<?php echo esc_attr((string) ($step['help'] ?? '')); ?>" />
+                <label class="finder-field__label"><?php esc_html_e('Hint (optional)', 'trovilo'); ?></label>
+                <input type="text" class="regular-text" aria-label="<?php esc_attr_e('Hint (optional)', 'trovilo'); ?>" data-finder-name="[steps][__STEP__][help]" name="<?php echo esc_attr($base); ?>[help]" value="<?php echo esc_attr((string) ($step['help'] ?? '')); ?>" />
             </p>
             <div class="finder-options" data-finder-options>
                 <?php foreach (array_values($options) as $j => $option) : ?>
                     <?php $this->renderOption($index, (int) $j, is_array($option) ? $option : []); ?>
                 <?php endforeach; ?>
             </div>
-            <button type="button" class="button button-small" data-finder-add-option><?php esc_html_e('Add option', 'plogins-finder'); ?></button>
+            <button type="button" class="button button-small" data-finder-add-option><?php esc_html_e('Add option', 'trovilo'); ?></button>
         </div>
         <?php
     }
@@ -329,9 +329,9 @@ final class Settings implements HasHooks
         $base = self::OPTION . '[steps][' . $stepIndex . '][options][' . $optIndex . ']';
         ?>
         <div class="finder-option-row" data-finder-option-row>
-            <input type="text" class="finder-option-row__label" aria-label="<?php esc_attr_e('Option label', 'plogins-finder'); ?>" placeholder="<?php esc_attr_e('Option label', 'plogins-finder'); ?>" data-finder-name="[steps][__STEP__][options][__OPT__][label]" name="<?php echo esc_attr($base); ?>[label]" value="<?php echo esc_attr((string) ($option['label'] ?? '')); ?>" />
-            <input type="text" class="finder-option-row__value" aria-label="<?php esc_attr_e('Value (slug)', 'plogins-finder'); ?>" placeholder="<?php esc_attr_e('value', 'plogins-finder'); ?>" data-finder-name="[steps][__STEP__][options][__OPT__][value]" data-finder-value name="<?php echo esc_attr($base); ?>[value]" value="<?php echo esc_attr((string) ($option['value'] ?? '')); ?>" />
-            <button type="button" class="button-link finder-option-row__remove" data-finder-remove-option aria-label="<?php esc_attr_e('Remove option', 'plogins-finder'); ?>">&times;</button>
+            <input type="text" class="finder-option-row__label" aria-label="<?php esc_attr_e('Option label', 'trovilo'); ?>" placeholder="<?php esc_attr_e('Option label', 'trovilo'); ?>" data-finder-name="[steps][__STEP__][options][__OPT__][label]" name="<?php echo esc_attr($base); ?>[label]" value="<?php echo esc_attr((string) ($option['label'] ?? '')); ?>" />
+            <input type="text" class="finder-option-row__value" aria-label="<?php esc_attr_e('Value (slug)', 'trovilo'); ?>" placeholder="<?php esc_attr_e('value', 'trovilo'); ?>" data-finder-name="[steps][__STEP__][options][__OPT__][value]" data-finder-value name="<?php echo esc_attr($base); ?>[value]" value="<?php echo esc_attr((string) ($option['value'] ?? '')); ?>" />
+            <button type="button" class="button-link finder-option-row__remove" data-finder-remove-option aria-label="<?php esc_attr_e('Remove option', 'trovilo'); ?>">&times;</button>
         </div>
         <?php
     }
@@ -355,9 +355,9 @@ final class Settings implements HasHooks
             </div>
             <div class="finder-result-row__fields">
                 <?php $this->renderProductSelect($base . '[product_id]', '', (int) ($row['product_id'] ?? 0)); ?>
-                <input type="text" aria-label="<?php esc_attr_e('Headline (optional)', 'plogins-finder'); ?>" placeholder="<?php esc_attr_e('Headline (optional)', 'plogins-finder'); ?>" name="<?php echo esc_attr($base); ?>[headline]" value="<?php echo esc_attr((string) ($row['headline'] ?? '')); ?>" />
-                <input type="text" aria-label="<?php esc_attr_e('Description (optional)', 'plogins-finder'); ?>" placeholder="<?php esc_attr_e('Description (optional)', 'plogins-finder'); ?>" name="<?php echo esc_attr($base); ?>[blurb]" value="<?php echo esc_attr((string) ($row['blurb'] ?? '')); ?>" />
-                <input type="text" aria-label="<?php esc_attr_e('Button label (optional)', 'plogins-finder'); ?>" placeholder="<?php esc_attr_e('Button label (optional)', 'plogins-finder'); ?>" name="<?php echo esc_attr($base); ?>[cta_label]" value="<?php echo esc_attr((string) ($row['cta_label'] ?? '')); ?>" />
+                <input type="text" aria-label="<?php esc_attr_e('Headline (optional)', 'trovilo'); ?>" placeholder="<?php esc_attr_e('Headline (optional)', 'trovilo'); ?>" name="<?php echo esc_attr($base); ?>[headline]" value="<?php echo esc_attr((string) ($row['headline'] ?? '')); ?>" />
+                <input type="text" aria-label="<?php esc_attr_e('Description (optional)', 'trovilo'); ?>" placeholder="<?php esc_attr_e('Description (optional)', 'trovilo'); ?>" name="<?php echo esc_attr($base); ?>[blurb]" value="<?php echo esc_attr((string) ($row['blurb'] ?? '')); ?>" />
+                <input type="text" aria-label="<?php esc_attr_e('Button label (optional)', 'trovilo'); ?>" placeholder="<?php esc_attr_e('Button label (optional)', 'trovilo'); ?>" name="<?php echo esc_attr($base); ?>[cta_label]" value="<?php echo esc_attr((string) ($row['cta_label'] ?? '')); ?>" />
             </div>
         </div>
         <?php
@@ -374,9 +374,9 @@ final class Settings implements HasHooks
         $attrs  = 'name="' . esc_attr($name) . '"';
         $attrs .= $id !== ''
             ? ' id="' . esc_attr($id) . '"'
-            : ' aria-label="' . esc_attr__('Recommended product', 'plogins-finder') . '"';
+            : ' aria-label="' . esc_attr__('Recommended product', 'trovilo') . '"';
         echo '<select class="finder-product-select" data-finder-product ' . $attrs . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-        echo '<option value="0">' . esc_html__('- Select a product -', 'plogins-finder') . '</option>';
+        echo '<option value="0">' . esc_html__('- Select a product -', 'trovilo') . '</option>';
 
         foreach ($this->productChoices() as $productId => $label) {
             printf(
@@ -426,7 +426,7 @@ final class Settings implements HasHooks
         $tipId = 'finder-tip-' . (++$this->tipSeq);
         ?>
         <span class="finder-help">
-            <button type="button" class="finder-help__toggle" aria-describedby="<?php echo esc_attr($tipId); ?>" aria-label="<?php esc_attr_e('More information', 'plogins-finder'); ?>">?</button>
+            <button type="button" class="finder-help__toggle" aria-describedby="<?php echo esc_attr($tipId); ?>" aria-label="<?php esc_attr_e('More information', 'trovilo'); ?>">?</button>
             <span class="finder-help__tip" id="<?php echo esc_attr($tipId); ?>" role="tooltip"><?php echo esc_html($text); ?></span>
         </span>
         <?php
