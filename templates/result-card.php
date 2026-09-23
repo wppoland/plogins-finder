@@ -24,7 +24,7 @@ defined('ABSPATH') || exit;
 // phpcs:disable WordPress.WP.GlobalVariablesOverride.Prohibited -- template-scope vars injected via extract().
 
 $finder_image_id = (int) ($product['image_id'] ?? 0);
-$finder_cta      = $cta_label !== '' ? $cta_label : __('View product', 'trovilo');
+$finder_cta      = $cta_label !== '' ? $cta_label : __('View product', 'elektilo');
 $finder_target   = ! empty($new_tab) ? ' target="_blank" rel="noopener noreferrer"' : '';
 ?>
 <div class="plogins-finder-card" style="--finder-accent: <?php echo esc_attr($accent_color); ?>;">

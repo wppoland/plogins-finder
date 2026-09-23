@@ -3,140 +3,143 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plogins Finder - Product Finder Quiz for WooCommerce "
 "1.0.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/trovilo\n"
-"POT-Creation-Date: 2026-07-08T19:16:14+00:00\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elektilo\n"
+"POT-Creation-Date: 2026-09-23T08:47:35+00:00\n"
+"PO-Revision-Date: 2026-09-23 10:00+0000\n"
 "Last-Translator: motylanogha <szatkowski.mariusz@gmail.com>\n"
-"Language-Team: Polish <pl@li.org>\n"
-"Language: pl_PL\n"
+"Language-Team: Spanish <es@li.org>\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
-"|| n%100>14) ? 1 : 2);\n"
-"X-Domain: trovilo\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: elektilo\n"
 
 #. Plugin Name of the plugin
-#: trovilo.php
-msgid "Plogins Finder - Product Finder Quiz for WooCommerce"
-msgstr "Plogins Finder - Kreator doboru produktu dla WooCommerce"
+#: elektilo.php
+msgid "Elektilo - Product Finder Quiz for WooCommerce"
+msgstr "Elektilo - Cuestionario buscador de productos para WooCommerce"
 
 #. Plugin URI of the plugin
-#: trovilo.php
-msgid "https://plogins.com/trovilo/"
-msgstr "https://plogins.com/pl/trovilo/"
+#: elektilo.php
+msgid "https://plogins.com/plogins-finder/"
+msgstr "https://plogins.com/plogins-finder/"
 
 #. Description of the plugin
-#: trovilo.php
+#: elektilo.php
 msgid ""
 "Friendly step-by-step product finder quiz for WooCommerce - guided single-"
 "choice questions map to one product recommendation. Accessible, no jQuery, "
 "zero layout shift, REST-powered."
 msgstr ""
-"Przyjazny kreator doboru produktu dla WooCommerce - proste pytania "
-"jednokrotnego wyboru prowadzą do jednej rekomendacji produktu. Dostępny, bez "
-"jQuery, bez przeskoków układu, oparty o REST."
+"Amigable cuestionario buscador de productos paso a paso para WooCommerce: "
+"las preguntas guiadas de elección única llevan a una única recomendación de "
+"producto. Accesible, sin jQuery, sin saltos de diseño y basado en REST."
 
 #. Author of the plugin
-#: trovilo.php
+#: elektilo.php
 msgid "WPPoland.com"
 msgstr "WPPoland.com"
 
 #. Author URI of the plugin
-#: trovilo.php
+#: elektilo.php
 msgid "https://wppoland.com"
 msgstr "https://wppoland.com"
 
-#: trovilo.php:51
-msgid "Finder requires WooCommerce to be active."
-msgstr "Finder wymaga aktywnej wtyczki WooCommerce."
+#: elektilo.php:52
+msgid "Elektilo requires WooCommerce to be installed and activated."
+msgstr "Elektilo requiere que WooCommerce esté instalado y activado."
 
 #: src/Admin/Settings.php:52
 msgid "Settings"
-msgstr "Ustawienia"
+msgstr "Ajustes"
 
-#: src/Admin/Settings.php:82 src/Admin/Settings.php:373
+#: src/Admin/Settings.php:82 src/Admin/Settings.php:379
 msgid "- Select a product -"
-msgstr "- Wybierz produkt -"
+msgstr "- Selecciona un producto -"
 
 #: src/Admin/Settings.php:83 src/Admin/Settings.php:236
 msgid "Add step"
-msgstr "Dodaj krok"
+msgstr "Añadir paso"
 
 #: src/Admin/Settings.php:84 src/Admin/Settings.php:319
 msgid "Add option"
-msgstr "Dodaj opcję"
+msgstr "Añadir opción"
 
 #: src/Admin/Settings.php:85
 msgid "Remove"
-msgstr "Usuń"
+msgstr "Quitar"
 
 #: src/Admin/Settings.php:86 src/Admin/Settings.php:304
 msgid "Remove step"
-msgstr "Usuń krok"
+msgstr "Quitar paso"
 
 #: src/Admin/Settings.php:87 src/Admin/Settings.php:307
+#: src/Admin/Settings.php:308
 msgid "Question"
-msgstr "Pytanie"
+msgstr "Pregunta"
 
 #: src/Admin/Settings.php:88 src/Admin/Settings.php:311
+#: src/Admin/Settings.php:312
 msgid "Hint (optional)"
-msgstr "Podpowiedź (opcjonalnie)"
+msgstr "Pista (opcional)"
 
 #: src/Admin/Settings.php:89 src/Admin/Settings.php:332
 msgid "Option label"
-msgstr "Etykieta opcji"
+msgstr "Etiqueta de la opción"
 
-#: src/Admin/Settings.php:90
+#: src/Admin/Settings.php:90 src/Admin/Settings.php:333
 msgid "Value (slug)"
-msgstr "Wartość (slug)"
+msgstr "Valor (slug)"
 
 #: src/Admin/Settings.php:91 src/Admin/Settings.php:254
 msgid "Generate / refresh combinations"
-msgstr "Generuj / odśwież kombinacje"
+msgstr "Generar / actualizar combinaciones"
 
 #: src/Admin/Settings.php:92 src/Admin/Settings.php:266
+#: src/Admin/Settings.php:377
 msgid "Recommended product"
-msgstr "Polecany produkt"
+msgstr "Producto recomendado"
 
 #: src/Admin/Settings.php:93 src/Admin/Settings.php:358
 msgid "Headline (optional)"
-msgstr "Nagłówek (opcjonalnie)"
+msgstr "Titular (opcional)"
 
 #: src/Admin/Settings.php:94 src/Admin/Settings.php:359
 msgid "Description (optional)"
-msgstr "Opis (opcjonalnie)"
+msgstr "Descripción (opcional)"
 
 #: src/Admin/Settings.php:95 src/Admin/Settings.php:360
 msgid "Button label (optional)"
-msgstr "Etykieta przycisku (opcjonalnie)"
+msgstr "Etiqueta del botón (opcional)"
 
 #: src/Admin/Settings.php:96
 msgid "All combinations have a product. ✓"
-msgstr "Wszystkie kombinacje mają produkt. ✓"
+msgstr "Todas las combinaciones tienen un producto. ✓"
 
 #: src/Admin/Settings.php:97
 msgid "{count} combination(s) still need a product."
-msgstr "Liczba kombinacji bez produktu: {count}."
+msgstr "{count} combinación(es) todavía necesitan un producto."
 
 #: src/Admin/Settings.php:98
 msgid "Define at least one step with options first."
-msgstr "Najpierw zdefiniuj co najmniej jeden krok z opcjami."
+msgstr "Primero define al menos un paso con opciones."
 
 #: src/Admin/Settings.php:106
-msgid "Finder Settings"
-msgstr "Ustawienia Finder"
+msgid "Elektilo: product finder quiz"
+msgstr "Elektilo: cuestionario buscador de productos"
 
 #: src/Admin/Settings.php:107
-msgid "Finder"
-msgstr "Finder"
+msgid "Elektilo"
+msgstr "Elektilo"
 
 #: src/Admin/Settings.php:145
 msgid "Live"
-msgstr "Aktywny"
+msgstr "Activo"
 
 #: src/Admin/Settings.php:147
 msgid "Off"
-msgstr "Wyłączony"
+msgstr "Desactivado"
 
 #: src/Admin/Settings.php:152
 msgid ""
@@ -144,9 +147,9 @@ msgid ""
 "it to any page with the shortcode below, define your questions, then map "
 "every answer combination to a product."
 msgstr ""
-"Zbuduj przyjazny kreator krok po kroku, który prowadzi klienta do jednego "
-"produktu. Dodaj go na dowolnej stronie poniższym shortcodem, zdefiniuj "
-"pytania, a następnie przypisz produkt do każdej kombinacji odpowiedzi."
+"Crea un cuestionario amigable paso a paso que guíe a tus clientes hacia un "
+"único producto. Añádelo a cualquier página con el shortcode de abajo, define "
+"tus preguntas y luego asigna un producto a cada combinación de respuestas."
 
 #: src/Admin/Settings.php:156
 msgid "Shortcode:"
@@ -154,11 +157,11 @@ msgstr "Shortcode:"
 
 #: src/Admin/Settings.php:164
 msgid "Basics"
-msgstr "Podstawy"
+msgstr "Aspectos básicos"
 
 #: src/Admin/Settings.php:169
 msgid "Enable finder"
-msgstr "Włącz kreator"
+msgstr "Activar Finder"
 
 #: src/Admin/Settings.php:170
 msgid ""
@@ -166,61 +169,62 @@ msgid ""
 "mapped, then turn it on so the quiz appears wherever you placed the "
 "shortcode."
 msgstr ""
-"Główny przełącznik. Zostaw wyłączony, dopóki każda kombinacja poniżej nie ma "
-"przypisanego produktu, wtedy włącz, aby kreator pojawił się tam, gdzie "
-"wstawiłeś shortcode."
+"El interruptor principal. Mantenlo desactivado hasta que cada combinación de "
+"abajo tenga un producto asignado; luego actívalo para que el cuestionario "
+"aparezca allí donde hayas colocado el shortcode."
 
 #: src/Admin/Settings.php:175
 msgid "Show the finder quiz on the storefront."
-msgstr "Pokaż kreator na stronie sklepu."
+msgstr "Mostrar el cuestionario de Finder en la tienda."
 
 #: src/Admin/Settings.php:180
 msgid "Heading"
-msgstr "Nagłówek"
+msgstr "Encabezado"
 
 #: src/Admin/Settings.php:182
 msgid "Find your perfect match in 30 seconds"
-msgstr "Dobierz idealny produkt w 30 sekund"
+msgstr "Encuentra tu producto ideal en 30 segundos"
 
 #: src/Admin/Settings.php:186
 msgid "Sub-heading"
-msgstr "Podtytuł"
+msgstr "Subtítulo"
 
 #: src/Admin/Settings.php:188
 msgid "Answer a couple of questions and we’ll recommend the right product."
-msgstr "Odpowiedz na kilka pytań, a polecimy odpowiedni produkt."
+msgstr ""
+"Responde a un par de preguntas y te recomendaremos el producto adecuado."
 
 #: src/Admin/Settings.php:193
 msgid "Accent colour"
-msgstr "Kolor akcentu"
+msgstr "Color de acento"
 
 #: src/Admin/Settings.php:194
 msgid ""
 "Used for the progress bar, the selected option and the main button. Pick a "
 "colour that matches your brand."
 msgstr ""
-"Używany dla paska postępu, wybranej opcji i głównego przycisku. Wybierz "
-"kolor pasujący do Twojej marki."
+"Se usa para la barra de progreso, la opción seleccionada y el botón "
+"principal. Elige un color que combine con tu marca."
 
 #: src/Admin/Settings.php:201
 msgid "Show price"
-msgstr "Pokaż cenę"
+msgstr "Mostrar el precio"
 
 #: src/Admin/Settings.php:205
 msgid "Show the product price on the recommendation card."
-msgstr "Pokaż cenę produktu na karcie rekomendacji."
+msgstr "Mostrar el precio del producto en la tarjeta de recomendación."
 
 #: src/Admin/Settings.php:210
 msgid "Open in new tab"
-msgstr "Otwieraj w nowej karcie"
+msgstr "Abrir en nueva pestaña"
 
 #: src/Admin/Settings.php:214
 msgid "Open the recommended product in a new browser tab."
-msgstr "Otwieraj polecany produkt w nowej karcie przeglądarki."
+msgstr "Abra el producto recomendado en una nueva pestaña del navegador."
 
 #: src/Admin/Settings.php:224
 msgid "Steps"
-msgstr "Kroki"
+msgstr "Pasos"
 
 #: src/Admin/Settings.php:225
 msgid ""
@@ -228,18 +232,18 @@ msgid ""
 "a short slug used to identify the answer, keep it lowercase and unique "
 "within a step (e.g. home, gym)."
 msgstr ""
-"Każdy krok to jedno pytanie z opcjami jednokrotnego wyboru. „Wartość” opcji "
-"to krótki identyfikator odpowiedzi, pisz małymi literami, unikalnie w "
-"obrębie kroku (np. dom, silownia)."
+"Cada paso es una pregunta con opciones de elección única. El «valor» de la "
+"opción es un slug corto que identifica la respuesta: escríbelo en minúsculas "
+"y que sea único dentro de un paso (por ejemplo, casa, gimnasio)."
 
 #: src/Admin/Settings.php:227
 msgid "Add your questions and answers. Two or three short steps convert best."
 msgstr ""
-"Dodaj pytania i odpowiedzi. Dwa, trzy krótkie kroki konwertują najlepiej."
+"Añade tus preguntas y respuestas. Dos o tres pasos cortos convierten mejor."
 
 #: src/Admin/Settings.php:242
 msgid "Results map"
-msgstr "Mapa wyników"
+msgstr "Mapa de resultados"
 
 #: src/Admin/Settings.php:243
 msgid ""
@@ -247,93 +251,106 @@ msgid ""
 "build the list from your steps, then pick the product each combination "
 "should recommend. Existing picks are kept."
 msgstr ""
-"Jeden wiersz na kombinację odpowiedzi. Kliknij „Generuj / odśwież "
-"kombinacje”, aby zbudować listę z Twoich kroków, a następnie wybierz produkt "
-"polecany dla każdej kombinacji. Istniejące wybory zostają zachowane."
+"Una fila por cada combinación de respuestas. Haz clic en «Generar / "
+"actualizar combinaciones» para crear la lista a partir de tus pasos y luego "
+"elige el producto que debe recomendar cada combinación. Las selecciones "
+"existentes se conservan."
 
 #: src/Admin/Settings.php:260
 msgid "Fallback"
-msgstr "Wynik zapasowy"
+msgstr "Alternativa"
 
 #: src/Admin/Settings.php:261
 msgid ""
 "Shown when no combination matches, or when a mapped product is unavailable. "
 "A safe, popular product is a good choice."
 msgstr ""
-"Pokazywany, gdy żadna kombinacja nie pasuje lub przypisany produkt jest "
-"niedostępny. Dobrym wyborem jest bezpieczny, popularny produkt."
+"Se muestra cuando ninguna combinación coincide o cuando un producto asignado "
+"no está disponible. Un producto seguro y popular es una buena opción."
 
 #: src/Admin/Settings.php:270
 msgid "Headline"
-msgstr "Nagłówek"
+msgstr "Titular"
 
 #: src/Admin/Settings.php:274
 msgid "Description"
-msgstr "Opis"
+msgstr "Descripción"
 
 #: src/Admin/Settings.php:278
 msgid "Button label"
-msgstr "Etykieta przycisku"
+msgstr "Etiqueta del botón"
 
 #: src/Admin/Settings.php:279 templates/result-card.php:27
 msgid "View product"
-msgstr "Zobacz produkt"
+msgstr "Ver producto"
 
 #: src/Admin/Settings.php:333
 msgid "value"
-msgstr "wartość"
+msgstr "valor"
 
 #: src/Admin/Settings.php:334
 msgid "Remove option"
-msgstr "Usuń opcję"
+msgstr "Quitar opción"
 
-#: src/Admin/Settings.php:423
+#: src/Admin/Settings.php:429
 msgid "More information"
-msgstr "Więcej informacji"
+msgstr "Más información"
 
 #: src/Service/FinderService.php:50
 msgid "Start over"
-msgstr "Zacznij od nowa"
+msgstr "Empezar de nuevo"
 
 #: src/Service/FinderService.php:51
 msgid "Back"
-msgstr "Wstecz"
+msgstr "Atrás"
 
 #: src/Service/FinderService.php:52
 msgid "Step {current} of {total}"
-msgstr "Krok {current} z {total}"
+msgstr "Paso {current} de {total}"
 
 #: src/Service/FinderService.php:53
 msgid "Pick an option to continue."
-msgstr "Wybierz opcję, aby przejść dalej."
+msgstr "Elige una opción para continuar."
 
 #: src/Service/FinderService.php:54
 msgid "Here is your match!"
-msgstr "Oto Twój dopasowany produkt!"
+msgstr "¡Aquí tienes tu producto!"
 
 #: src/Service/FinderService.php:55
 msgid "Finding your match…"
-msgstr "Szukam dopasowania…"
+msgstr "Buscando tu producto…"
 
 #: src/Service/FinderService.php:56
 msgid "We could not find a match. Please try again."
-msgstr "Nie znaleźliśmy dopasowania. Spróbuj ponownie."
+msgstr "No hemos encontrado un producto. Inténtalo de nuevo."
 
 #: src/Service/FinderService.php:57
 msgid "That recommendation is not available right now."
-msgstr "Ta rekomendacja jest w tej chwili niedostępna."
+msgstr "Esa recomendación no está disponible en este momento."
 
 #: src/Service/FinderService.php:58
 msgid "Something went wrong. Please try again."
-msgstr "Coś poszło nie tak. Spróbuj ponownie."
+msgstr "Algo ha salido mal. Inténtalo de nuevo."
 
 #: templates/finder.php:50
 msgid "Quiz progress"
-msgstr "Postęp kreatora"
+msgstr "Progreso del cuestionario"
 
 #: templates/finder.php:111
 msgid "Please enable JavaScript to use the product finder."
-msgstr "Włącz JavaScript, aby skorzystać z kreatora doboru produktu."
+msgstr "Activa JavaScript para usar el buscador de productos."
 
-#~ msgid "Pick an option to continue"
-#~ msgstr "Wybierz opcję, aby przejść dalej"
+#~ msgid "Plogins Finder - Product Finder Quiz for WooCommerce"
+#~ msgstr "Plogins Finder: cuestionario buscador de productos para WooCommerce"
+
+#~ msgid "https://plogins.com/elektilo/"
+#~ msgstr "https://plogins.com/es/elektilo/"
+
+#~ msgid "Finder requires WooCommerce to be active."
+#~ msgstr "Finder requiere que WooCommerce esté activo."
+
+#~ msgid "Finder Settings"
+#~ msgstr "Ajustes de Finder"
+
+#~ msgid "Finder"
+#~ msgstr "Finder"

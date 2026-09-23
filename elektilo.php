@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       Trovilo - Product Finder Quiz for WooCommerce
+ * Plugin Name:       Elektilo - Product Finder Quiz for WooCommerce
  * Plugin URI:        https://plogins.com/plogins-finder/
  * Description:        Friendly step-by-step product finder quiz for WooCommerce - guided single-choice questions map to one product recommendation. Accessible, no jQuery, zero layout shift, REST-powered.
- * Version:           1.1.1
+ * Version:           1.1.2
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Requires Plugins:  woocommerce
@@ -11,7 +11,7 @@
  * Author URI:        https://wppoland.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       trovilo
+ * Text Domain:       elektilo
  * Domain Path:       /languages
  * WC requires at least: 8.0
  * WC tested up to: 11.0
@@ -25,7 +25,7 @@ namespace Finder;
 
 defined('ABSPATH') || exit;
 
-const VERSION     = '1.1.1';
+const VERSION     = '1.1.2';
 const PLUGIN_FILE = __FILE__;
 
 define('FINDER_DIR', plugin_dir_path(__FILE__));
@@ -43,13 +43,13 @@ add_action('before_woocommerce_init', static function (): void {
 
 // Translations: no manual load_plugin_textdomain() call. WordPress 4.6+ loads
 // translations for wp.org-hosted plugins automatically (just-in-time) from the
-// plugin slug, and the bundled languages/finder.pot lets translators get
+// plugin slug, and the bundled languages/elektilo.pot lets translators get
 // started. The `Domain Path: /languages` header points WP at the local files.
 add_action('plugins_loaded', static function (): void {
     if (! class_exists('WooCommerce')) {
         add_action('admin_notices', static function (): void {
             echo '<div class="notice notice-error"><p>';
-            echo esc_html__('Trovilo requires WooCommerce to be installed and activated.', 'trovilo');
+            echo esc_html__('Elektilo requires WooCommerce to be installed and activated.', 'elektilo');
             echo '</p></div>';
         });
         return;

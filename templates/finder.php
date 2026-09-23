@@ -47,7 +47,7 @@ $finder_total = count($steps);
 		<div class="plogins-finder__progress-bar" role="progressbar"
 			aria-valuemin="1" aria-valuemax="<?php echo esc_attr((string) $finder_total); ?>"
 			aria-valuenow="1"
-			aria-label="<?php esc_attr_e('Quiz progress', 'trovilo'); ?>">
+			aria-label="<?php esc_attr_e('Quiz progress', 'elektilo'); ?>">
 			<span class="plogins-finder__progress-fill" data-finder-progress-fill></span>
 		</div>
 		<p class="plogins-finder__progress-text" data-finder-progress-text aria-live="polite"></p>
@@ -108,7 +108,7 @@ $finder_total = count($steps);
 
 	<noscript>
 		<p class="plogins-finder__noscript">
-			<?php esc_html_e('Please enable JavaScript to use the product finder.', 'trovilo'); ?>
+			<?php esc_html_e('Please enable JavaScript to use the product finder.', 'elektilo'); ?>
 		</p>
 	</noscript>
 </div>
