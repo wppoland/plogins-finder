@@ -104,7 +104,7 @@ final class Settings implements HasHooks
     {
         add_menu_page(
             __('Trovilo: product finder quiz', 'trovilo'),
-            __('Product Finder', 'trovilo'),
+            __('Trovilo', 'trovilo'),
             'manage_woocommerce',
             self::PAGE,
             [$this, 'renderPage'],

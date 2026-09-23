@@ -4,7 +4,7 @@ Tags: woocommerce, product finder, product quiz, product recommendation, guided 
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ A step-by-step product finder quiz for WooCommerce: guided single-choice questio
 
 == Description ==
 
-Trovilo adds a guided "help me choose" quiz to any page with the `[finder]` shortcode. Shoppers answer a short series of single-choice questions and are shown one recommended product, with its image, price and a button straight to the product page.
+Trovilo adds a guided "help me choose" quiz to any page with the `[trovilo]` shortcode. Shoppers answer a short series of single-choice questions and are shown one recommended product, with its image, price and a button straight to the product page.
 
 Trovilo is developed in the open. The code, and a place to report bugs or request features, live at [github.com/wppoland/plogins-finder](https://github.com/wppoland/plogins-finder).
 
@@ -35,7 +35,7 @@ You define the questions and options, then map every answer combination to a pro
 
 = Settings =
 
-A WooCommerce-capability settings page (Finder menu) lets you:
+A WooCommerce-capability settings page (Trovilo menu) lets you:
 
 * Enable or disable the quiz, set the heading, sub-heading and accent colour, and choose whether the price shows on the result card.
 * Build the steps: each step is one question with single-choice options; the option "value" is a short slug used to identify the answer.
@@ -48,20 +48,20 @@ All strings are translatable through the `trovilo` text domain, and a `trovilo.p
 
 = How it works =
 
-The quiz is rendered server-side (so it can be cached with the page) and advanced entirely client-side, no round-trip between steps. Only the final recommendation is fetched, from a same-origin REST request to your own site, and rendered fresh so price and stock are current. The CSS and JavaScript are enqueued only on pages that contain the `[finder]` shortcode.
+The quiz is rendered server-side (so it can be cached with the page) and advanced entirely client-side, no round-trip between steps. Only the final recommendation is fetched, from a same-origin REST request to your own site, and rendered fresh so price and stock are current. The CSS and JavaScript are enqueued only on pages that contain the `[trovilo]` shortcode.
 
 == Installation ==
 
 1. Upload the plugin to `/wp-content/plugins/trovilo`, or install via Plugins > Add New.
 2. Activate it. WooCommerce must be active.
-3. Visit the **Product Finder** menu in wp-admin, build your steps, generate the combinations and pick a product for each, then enable the quiz.
-4. Add the quiz to any page or post with the `[finder]` shortcode.
+3. Visit the **Trovilo** menu in wp-admin, build your steps, generate the combinations and pick a product for each, then enable the quiz.
+4. Add the quiz to any page or post with the `[trovilo]` shortcode.
 
 == Frequently Asked Questions ==
 
 = Does it require WooCommerce? =
 
-Yes. Finder requires an active WooCommerce installation.
+Yes. Trovilo requires an active WooCommerce installation.
 
 = Does it use jQuery? =
 
@@ -69,7 +69,7 @@ No. The plugin's own front-end script is vanilla JavaScript with no jQuery depen
 
 = Where do I put the quiz? =
 
-Anywhere the `[finder]` shortcode can go, a page, a post, or a page-builder Raw HTML / shortcode block.
+Anywhere the `[trovilo]` shortcode can go, a page, a post, or a page-builder Raw HTML / shortcode block.
 
 = How many questions can I ask? =
 
@@ -89,17 +89,21 @@ Yes. Network activate it or activate it on individual sites; each site keeps its
 
 == Screenshots ==
 
-1. The step-by-step finder quiz on the storefront.
+1. The step-by-step Trovilo quiz on the storefront.
 2. The recommendation card with the product and a call to action.
-3. The Finder settings screen: steps builder and results map.
+3. The Trovilo settings screen: steps builder and results map.
 
 == External Services ==
 
-Finder does not connect to, or send any data to, any external service or third-party server. It bundles no SDK, API client, web font, map tile, CDN asset or analytics call, everything runs on your own site.
+Trovilo does not connect to, or send any data to, any external service or third-party server. It bundles no SDK, API client, web font, map tile, CDN asset or analytics call, everything runs on your own site.
 
 All data stays inside your WordPress database: the questions, options, results map and settings live in the `finder_settings` option (with `finder_db_version` tracking the schema). When a shopper finishes the quiz, their answers are sent in a same-origin REST request to your site's own `/wp-json/` endpoint, which returns the recommendation; no outbound HTTP request is ever made. The current step and answers are also kept in the page URL and the browser's per-tab session storage so the quiz is resumable. Deleting the plugin removes its options.
 
 == Changelog ==
+
+= 1.1.1 =
+* The shortcode is now `[trovilo]`. It used to be `[finder]`, a tag generic enough that any other plugin could claim it first, and which no longer matched the plugin's name. Nothing else about the quiz changed.
+* The admin menu now reads Trovilo rather than Product Finder, and the remaining places the documentation still said Finder were updated.
 
 = 1.1.0 =
 * Renamed to Trovilo. The WordPress.org review team asks a plugin name to lead with a distinctive, coined identifier rather than a generic descriptive word. Trovilo is Esperanto for a finding tool. The text domain follows the name; the stored data, the settings and every hook are unchanged.

@@ -43,7 +43,7 @@ final class FinderService implements HasHooks
             styleUrl: \Finder\Plugin::instance()->url('assets/css/finder.css'),
             scriptUrl: \Finder\Plugin::instance()->url('assets/js/finder.js'),
             version: \Finder\VERSION,
-            shortcodeTag: 'finder',
+            shortcodeTag: 'trovilo',
             widgetTemplate: 'finder',
             resultTemplate: 'result-card',
             labels: [
