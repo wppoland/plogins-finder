@@ -66,18 +66,18 @@ final class Settings implements HasHooks
 
         $plugin = \Finder\Plugin::instance();
 
+        wp_enqueue_style('woocommerce_admin_styles');
         wp_enqueue_style('finder-admin', $plugin->url('assets/css/admin.css'), [], \Finder\VERSION);
         wp_enqueue_script(
             'finder-admin',
             $plugin->url('assets/js/admin.js'),
-            [],
+            ['jquery', 'wc-enhanced-select'],
             \Finder\VERSION,
             ['in_footer' => true, 'strategy' => 'defer']
         );
 
         wp_localize_script('finder-admin', 'ploginsFinderAdmin', [
             'option'   => self::OPTION,
-            'products' => $this->productChoices(),
             'i18n'     => [
                 'option'          => __('- Select a product -', 'elektilo'),
                 'addStep'         => __('Add step', 'elektilo'),
@@ -364,7 +364,8 @@ final class Settings implements HasHooks
     }
 
     /**
-     * Render a product <select> populated server-side (house pattern, no select2).
+     * Render WooCommerce's AJAX product search select, so every product is
+     * reachable however large the catalogue. Only the saved product is printed.
      */
     private function renderProductSelect(string $name, string $id, int $selected): void
     {
@@ -375,47 +376,20 @@ final class Settings implements HasHooks
         $attrs .= $id !== ''
             ? ' id="' . esc_attr($id) . '"'
             : ' aria-label="' . esc_attr__('Recommended product', 'elektilo') . '"';
-        echo '<select class="finder-product-select" data-finder-product ' . $attrs . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-        echo '<option value="0">' . esc_html__('- Select a product -', 'elektilo') . '</option>';
+        $attrs .= ' data-placeholder="' . esc_attr__('- Select a product -', 'elektilo') . '"';
+        echo '<select class="wc-product-search finder-product-select" data-action="woocommerce_json_search_products" data-allow_clear="true" style="width:100%" ' . $attrs . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
-        foreach ($this->productChoices() as $productId => $label) {
+        $product = $selected > 0 ? wc_get_product($selected) : null;
+
+        if ($product instanceof \WC_Product) {
             printf(
-                '<option value="%d"%s>%s</option>',
-                (int) $productId,
-                selected($selected, (int) $productId, false),
-                esc_html($label)
+                '<option value="%d" selected="selected">%s</option>',
+                (int) $product->get_id(),
+                esc_html(wp_strip_all_tags($product->get_formatted_name()))
             );
         }
 
         echo '</select>';
-    }
-
-    /**
-     * Purchasable simple/variable products as id => "Name (#id)".
-     *
-     * @return array<int, string>
-     */
-    private function productChoices(): array
-    {
-        $products = wc_get_products([
-            'status' => 'publish',
-            'limit'  => 200,
-            'orderby' => 'title',
-            'order'  => 'ASC',
-            'return' => 'objects',
-        ]);
-
-        $choices = [];
-
-        foreach ($products as $product) {
-            if (! $product instanceof \WC_Product) {
-                continue;
-            }
-
-            $choices[(int) $product->get_id()] = sprintf('%s (#%d)', $product->get_name(), $product->get_id());
-        }
-
-        return $choices;
     }
 
     /**

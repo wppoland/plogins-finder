@@ -1,7 +1,8 @@
 /**
  * Finder, admin settings enhancement.
  *
- * Builds the steps/options repeater and the results-map grid. No dependencies.
+ * Builds the steps/options repeater and the results-map grid. The product
+ * pickers are WooCommerce's own AJAX search selects (wc-enhanced-select).
  * All dynamic text is written with textContent / DOM APIs (never innerHTML from
  * data), so product names and labels can never inject markup.
  */
@@ -10,7 +11,6 @@
 
 	var CFG = window.ploginsFinderAdmin || {};
 	var OPTION = CFG.option || 'finder_settings';
-	var PRODUCTS = CFG.products || {};
 	var I18N = CFG.i18n || {};
 
 	function t(key, fallback) {
@@ -145,19 +145,20 @@
 	}
 
 	/* ---- Results grid ----------------------------------------------------- */
-	function buildProductSelect(name, selected) {
+	function buildProductSelect(name, selected, label) {
 		var select = el('select', {
-			'class': 'finder-product-select', name: name,
-			'aria-label': t('product', 'Recommended product')
+			'class': 'wc-product-search finder-product-select', name: name,
+			'aria-label': t('product', 'Recommended product'),
+			'data-action': 'woocommerce_json_search_products',
+			'data-placeholder': t('option', '- Select a product -'),
+			'data-allow_clear': 'true',
+			style: 'width:100%'
 		});
-		select.appendChild(el('option', { value: '0' }, t('option', '- Select a product -')));
-		Object.keys(PRODUCTS).forEach(function (id) {
-			var opt = el('option', { value: id }, PRODUCTS[id]);
-			if (String(selected) === String(id)) {
-				opt.selected = true;
-			}
+		if (selected && String(selected) !== '0') {
+			var opt = el('option', { value: String(selected) }, label || '#' + selected);
+			opt.selected = true;
 			select.appendChild(opt);
-		});
+		}
 		return select;
 	}
 
@@ -174,7 +175,7 @@
 		row.appendChild(combo);
 
 		var fields = el('div', { 'class': 'finder-result-row__fields' });
-		fields.appendChild(buildProductSelect(base + '[product_id]', existing.product_id || 0));
+		fields.appendChild(buildProductSelect(base + '[product_id]', existing.product_id || 0, existing.product_label));
 		[['headline', t('headline', 'Headline (optional)')], ['blurb', t('blurb', 'Description (optional)')], ['cta_label', t('cta', 'Button label (optional)')]].forEach(function (pair) {
 			var inp = el('input', { type: 'text', placeholder: pair[1], 'aria-label': pair[1], name: base + '[' + pair[0] + ']' });
 			if (existing[pair[0]]) {
@@ -222,6 +223,7 @@
 			var texts = row.querySelectorAll('.finder-result-row__fields input[type="text"]');
 			map[key] = {
 				product_id: select ? select.value : 0,
+				product_label: select && select.selectedIndex > -1 ? select.options[select.selectedIndex].text : '',
 				headline: texts[0] ? texts[0].value : '',
 				blurb: texts[1] ? texts[1].value : '',
 				cta_label: texts[2] ? texts[2].value : ''
@@ -268,6 +270,9 @@
 		combos.forEach(function (combo, i) {
 			resultsContainer.appendChild(buildResultRow(i, combo, existing[combo.join('|')]));
 		});
+		if (window.jQuery) {
+			window.jQuery(document.body).trigger('wc-enhanced-select-init');
+		}
 		updateCoverage(resultsContainer, callout);
 	}
 
@@ -319,9 +324,12 @@
 					generate(stepsContainer, resultsContainer, callout);
 				});
 			}
-			resultsContainer.addEventListener('change', function () {
-				updateCoverage(resultsContainer, callout);
-			});
+			// selectWoo reports changes through jQuery, which native listeners never see.
+			var onChange = function () { updateCoverage(resultsContainer, callout); };
+			resultsContainer.addEventListener('change', onChange);
+			if (window.jQuery) {
+				window.jQuery(resultsContainer).on('change', 'select', onChange);
+			}
 			updateCoverage(resultsContainer, callout);
 		}
 	}
