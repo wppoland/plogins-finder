@@ -154,7 +154,7 @@ final class Settings implements HasHooks
 
             <p class="finder-admin__shortcode">
                 <?php esc_html_e('Shortcode:', 'elektilo'); ?>
-                <code>[finder]</code>
+                <code>[elektilo]</code>
             </p>
 
             <form method="post" action="options.php" class="finder-admin__form">
@@ -425,8 +425,8 @@ final class Settings implements HasHooks
 
         return array_merge($defaults, [
             'enabled'      => ! empty($raw['enabled']),
-            'title'        => isset($raw['title']) ? sanitize_text_field(wp_unslash((string) $raw['title'])) : '',
-            'intro'        => isset($raw['intro']) ? sanitize_text_field(wp_unslash((string) $raw['intro'])) : '',
+            'title'        => isset($raw['title']) ? sanitize_text_field((string) $raw['title']) : '',
+            'intro'        => isset($raw['intro']) ? sanitize_text_field((string) $raw['intro']) : '',
             'accent_color' => is_string($accent) && $accent !== '' ? $accent : '#d97706',
             'show_price'   => ! empty($raw['show_price']),
             'new_tab'      => ! empty($raw['new_tab']),
@@ -434,6 +434,18 @@ final class Settings implements HasHooks
             'results'      => $this->sanitizeResults($raw['results'] ?? null),
             'fallback'     => $this->sanitizeResultEntry($raw['fallback'] ?? null),
         ]);
+    }
+
+    /**
+     * The answer value as the admin script slugs it (assets/js/admin.js
+     * slugify): lower-case, every run of other characters becomes one dash.
+     * sanitize_key() deleted those characters instead, so "home gym" was saved
+     * as "homegym" on the step and "home-gym" in the results map, and that
+     * answer never matched its product.
+     */
+    public static function optionSlug(string $value): string
+    {
+        return trim((string) preg_replace('/[^a-z0-9_\-]+/', '-', strtolower($value)), '-');
     }
 
     /**
@@ -462,8 +474,8 @@ final class Settings implements HasHooks
                         continue;
                     }
 
-                    $label = isset($option['label']) ? sanitize_text_field(wp_unslash((string) $option['label'])) : '';
-                    $value = isset($option['value']) ? sanitize_key((string) $option['value']) : '';
+                    $label = isset($option['label']) ? sanitize_text_field((string) $option['label']) : '';
+                    $value = isset($option['value']) ? self::optionSlug((string) $option['value']) : '';
 
                     if ($label === '' || $value === '') {
                         continue;
@@ -478,8 +490,8 @@ final class Settings implements HasHooks
             }
 
             $steps[] = [
-                'question' => isset($step['question']) ? sanitize_text_field(wp_unslash((string) $step['question'])) : '',
-                'help'     => isset($step['help']) ? sanitize_text_field(wp_unslash((string) $step['help'])) : '',
+                'question' => isset($step['question']) ? sanitize_text_field((string) $step['question']) : '',
+                'help'     => isset($step['help']) ? sanitize_text_field((string) $step['help']) : '',
                 'options'  => $options,
             ];
         }
@@ -509,7 +521,7 @@ final class Settings implements HasHooks
 
             if (is_array($row['match'] ?? null)) {
                 foreach ($row['match'] as $value) {
-                    $slug = sanitize_key((string) $value);
+                    $slug = self::optionSlug((string) $value);
 
                     if ($slug !== '') {
                         $match[] = $slug;
@@ -540,9 +552,9 @@ final class Settings implements HasHooks
 
         return [
             'product_id' => isset($raw['product_id']) ? absint($raw['product_id']) : 0,
-            'headline'   => isset($raw['headline']) ? sanitize_text_field(wp_unslash((string) $raw['headline'])) : '',
-            'blurb'      => isset($raw['blurb']) ? sanitize_textarea_field(wp_unslash((string) $raw['blurb'])) : '',
-            'cta_label'  => isset($raw['cta_label']) ? sanitize_text_field(wp_unslash((string) $raw['cta_label'])) : '',
+            'headline'   => isset($raw['headline']) ? sanitize_text_field((string) $raw['headline']) : '',
+            'blurb'      => isset($raw['blurb']) ? sanitize_textarea_field((string) $raw['blurb']) : '',
+            'cta_label'  => isset($raw['cta_label']) ? sanitize_text_field((string) $raw['cta_label']) : '',
         ];
     }
 

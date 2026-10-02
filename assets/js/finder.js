@@ -165,7 +165,8 @@
 
 			var active = stepEls[index];
 			if (active) {
-				var firstInput = active.querySelector('[data-finder-option]');
+				var firstInput = active.querySelector('[data-finder-option]:checked') ||
+					active.querySelector('[data-finder-option]');
 				if (firstInput) {
 					// preventScroll: focusing on initial load must not yank the
 					// viewport down to the finder (desktop scrolled past hero).
@@ -255,14 +256,51 @@
 			showStep(0);
 		}
 
-		form.addEventListener('change', function (event) {
+		// Advance on a deliberate pick, not on every change. Arrow keys move the
+		// selection inside a radio group and browsers report that as a click
+		// and a change, so advancing on change skipped the step after the first
+		// arrow press and left the middle options unreachable by keyboard. A
+		// click on the answer that is already checked fires no change either,
+		// which stranded a shopper who went Back and kept their answer.
+		var arrowMove = false;
+
+		function pick(input) {
+			var stepEl = input.closest('[data-finder-step]');
+			choose(parseInt(stepEl.getAttribute('data-finder-step'), 10), input.value);
+		}
+
+		form.addEventListener('keydown', function (event) {
 			var input = event.target.closest('[data-finder-option]');
 			if (!input) {
 				return;
 			}
-			var stepEl = input.closest('[data-finder-step]');
-			var index = parseInt(stepEl.getAttribute('data-finder-step'), 10);
-			choose(index, input.value);
+			if (/^Arrow/.test(event.key)) {
+				arrowMove = true;
+				// The arrow's click fires synchronously as the key's default
+				// action; clear the flag after it so a browser that sends no
+				// click cannot swallow the next real one.
+				window.setTimeout(function () { arrowMove = false; }, 0);
+			} else if (event.key === 'Enter' || (event.key === ' ' && input.checked)) {
+				// Space on an unchecked answer clicks it natively. On the
+				// answer already checked (after the arrows moved there, or
+				// after Back) browsers send no click, so confirm it here.
+				event.preventDefault();
+				if (input.checked) {
+					pick(input);
+				}
+			}
+		});
+
+		form.addEventListener('click', function (event) {
+			var input = event.target.closest('input[data-finder-option]');
+			if (!input) {
+				return;
+			}
+			if (arrowMove) {
+				arrowMove = false;
+				return;
+			}
+			pick(input);
 		});
 
 		root.addEventListener('click', function (event) {

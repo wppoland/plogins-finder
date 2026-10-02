@@ -4,8 +4,8 @@
  *
  * Runs only when the plugin is deleted from wp-admin. Removes the options this
  * plugin created. Guarded by the WordPress uninstall constant so it can never
- * run in any other context. Finder stores everything in options (no custom
- * table), so there is nothing else to drop.
+ * run in any other context. Finder stores everything in options. Versions up
+ * to 1.1.4 also created an unused finder_compare_items table, dropped here.
  *
  * @package Finder
  */
@@ -21,6 +21,10 @@ function finder_uninstall_cleanup(): void
 {
     delete_option('finder_settings');
     delete_option('finder_db_version');
+
+    global $wpdb;
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.SchemaChange
+    $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}finder_compare_items");
 }
 
 if (is_multisite()) {
